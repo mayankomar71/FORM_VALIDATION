@@ -1,0 +1,50 @@
+<form [formGroup]="myform" (ngSubmit)="onSubmit()">
+  <h1>Form Validation </h1>
+
+  <label>
+    Name:
+    <input type="text" formControlName="Name">
+  </label>
+
+  <label>
+    Number:
+    <input class="box" type="text" formControlName="phoneno" minlength="10" maxlength="10" required>
+  </label>
+  <div *ngIf="control.phoneno.errors" class="alert alert-danger">
+    <p *ngIf="control.phoneno.errors.required">Mobile is not valid</p>
+  </div>
+
+  <label>
+    Email:
+    <input class="box" type="text" formControlName="email" placeholder="mayank@123" required>
+  </label>
+  <div *ngIf="control.email.errors" class="alert alert-danger">
+    <p id="email" *ngIf="control.email.errors.email">Email must be valid</p>
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label id="lbl1">
+      Street:
+      <input type="text" formControlName="street">
+    </label>
+
+    <label id="lbl1">
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+    <label>
+      State:
+      <input type="text" formControlName="state">
+    </label>
+
+    <label>
+      Zip Code:
+      <input type="text" formControlName="zip">
+    </label>
+  </div>
+
+  <button id="submitbutton" type="submit" [disabled]="!myform.valid">Submit</button>
+</form>
